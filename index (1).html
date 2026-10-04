@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Latihan interaktif Unit 1 All About Me untuk Prepare A1." />
+    <title>Unit 1 — All About Me | Interactive Practice</title>
+    <style>
+:root {
+  --ink: #17313b;
+  --muted: #6d7f86;
+  --paper: #fffdf9;
+  --cream: #f7f1e8;
+  --teal: #0e9f9a;
+  --teal-dark: #087a78;
+  --aqua: #dcf3ee;
+  --coral: #f47b67;
+  --coral-soft: #fff0eb;
+  --yellow: #ffd265;
+  --purple: #8576cc;
+  --purple-soft: #f0edff;
+  --blue: #4a8fce;
+  --line: #e7e3dc;
+  --shadow: 0 18px 45px rgba(37, 55, 58, 0.10);
+  --radius: 22px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--cream); color: var(--ink); line-height: 1.5; }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+.page-shell { max-width: 1440px; margin: 0 auto; background: var(--paper); min-height: 100vh; box-shadow: 0 0 60px rgba(40, 50, 40, .07); }
+.topbar { height: 78px; padding: 0 5.5vw; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(23,49,59,.08); position: sticky; top: 0; z-index: 10; background: rgba(255,253,249,.92); backdrop-filter: blur(16px); }
+.brand { display: flex; gap: 11px; align-items: center; }
+.brand-mark { width: 38px; height: 38px; border-radius: 12px 12px 12px 4px; background: var(--teal); color: white; display: grid; place-items: center; font-size: 22px; font-weight: 900; transform: rotate(-5deg); box-shadow: 4px 5px 0 #bde6df; }
+.brand strong, .brand small { display: block; }
+.brand strong { font-size: 14px; letter-spacing: .02em; }
+.brand small { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; margin-top: 1px; }
+.top-actions { display: flex; align-items: center; gap: 14px; }
+.progress-pill { padding: 8px 13px; background: #edf8f5; border-radius: 99px; color: var(--teal-dark); font-size: 12px; font-weight: 800; }
+.button { border: 0; border-radius: 13px; padding: 11px 16px; cursor: pointer; font-weight: 800; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(23,49,59,.12); }
+.button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid rgba(14,159,154,.4); outline-offset: 3px; }
+.button-primary { color: white; background: var(--teal); }
+.button-soft { background: #fff6e5; color: #93651c; }
+.button-dark { color: white; background: var(--ink); }
+.button-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+.hero-section { min-height: 490px; padding: 70px 8vw 65px; display: grid; grid-template-columns: 1fr .9fr; gap: 50px; align-items: center; background: radial-gradient(circle at 70% 10%, #fff5db 0, transparent 33%), linear-gradient(135deg, #fffdf9 0 63%, #e6f5f1 63%); overflow: hidden; }
+.kicker, .section-number, .mini-label, .rail-heading span { font-size: 10px; letter-spacing: .18em; font-weight: 900; color: var(--teal-dark); margin: 0 0 14px; }
+.hero-copy h1 { font-size: clamp(48px, 6vw, 86px); line-height: .92; letter-spacing: -.06em; margin: 0 0 24px; color: var(--ink); }
+.hero-copy h1 em { color: var(--coral); font-style: normal; position: relative; }
+.hero-copy h1 em::after { content: ""; position: absolute; left: 2px; right: 2px; bottom: -5px; height: 8px; background: var(--yellow); z-index: -1; transform: rotate(-2deg); }
+.hero-lede { max-width: 480px; font-size: 17px; color: var(--muted); margin: 0 0 28px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 11px; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 30px; color: #8a989c; font-size: 11px; font-weight: 700; }
+.hero-art { position: relative; min-height: 365px; }
+.art-backdrop { position: absolute; inset: 23px 25px 15px 45px; border-radius: 46% 54% 41% 59%; background: #f9cc66; transform: rotate(6deg); }
+.book-peek { position: absolute; margin: 0; overflow: hidden; box-shadow: 0 24px 36px rgba(34,55,60,.18); border: 8px solid white; background: white; }
+.book-peek img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.book-peek-back { width: 245px; height: 325px; top: 13px; right: 27px; transform: rotate(8deg); }
+.book-peek-front { width: 260px; height: 340px; top: 30px; left: 35px; transform: rotate(-8deg); }
+.sticker { position: absolute; font-weight: 900; }
+.sticker-star { color: var(--coral); font-size: 55px; top: 0; left: 7px; transform: rotate(-12deg); }
+.sticker-note { background: var(--ink); color: white; padding: 12px 13px; line-height: 1.05; font-size: 11px; right: 4px; bottom: 8px; transform: rotate(-7deg); box-shadow: 6px 7px 0 var(--coral); }
+.content-layout { display: grid; grid-template-columns: 225px 1fr; gap: 44px; padding: 65px 6vw 90px; }
+.lesson-rail { position: sticky; top: 110px; height: fit-content; }
+.rail-heading { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.rail-heading span { font-size: 9px; color: var(--muted); margin: 0; }
+.rail-heading strong { color: var(--teal-dark); }
+.lesson-nav { display: grid; gap: 7px; padding-top: 16px; }
+.nav-item { padding: 12px 10px; display: flex; gap: 11px; border-radius: 14px; transition: background .18s ease, transform .18s ease; }
+.nav-item:hover { background: #f4f6f1; transform: translateX(3px); }
+.nav-item.active { background: var(--aqua); }
+.nav-number { color: var(--coral); font-size: 11px; font-weight: 900; padding-top: 2px; }
+.nav-item strong, .nav-item small { display: block; }
+.nav-item strong { font-size: 13px; }
+.nav-item small { color: var(--muted); font-size: 10px; margin-top: 2px; }
+.rail-tip { margin-top: 48px; padding: 18px; border: 1px dashed #d9d0bd; background: #fff9e8; border-radius: 18px; }
+.tip-icon { width: 26px; height: 26px; display: grid; place-items: center; background: var(--yellow); border-radius: 50%; margin-bottom: 12px; }
+.rail-tip strong { font-size: 13px; display: block; }
+.rail-tip p { font-size: 11px; color: #877c69; margin: 6px 0 0; }
+.lesson-stack { min-width: 0; display: grid; gap: 72px; }
+.lesson-section { scroll-margin-top: 105px; }
+.section-heading { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 21px; border-bottom: 1px solid var(--line); }
+.section-heading h2 { font-size: clamp(29px, 4vw, 45px); letter-spacing: -.045em; line-height: 1; margin: 0 0 9px; }
+.section-heading p:last-child { margin: 0; color: var(--muted); font-size: 14px; }
+.section-number { margin: 0 0 10px; }
+.coral-heading .section-number { color: #d05a48; }.purple-heading .section-number { color: #665ab4; }.blue-heading .section-number { color: #3e77af; }
+.section-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; font-size: 30px; color: white; background: var(--teal); transform: rotate(10deg); }
+.coral-heading .section-icon { background: var(--coral); }.purple-heading .section-icon { background: var(--purple); }.blue-heading .section-icon { background: var(--blue); }
+.reference-strip { display: flex; gap: 16px; align-items: center; background: #fbfaf6; border-radius: 16px; padding: 11px; margin: 20px 0; border: 1px solid #f0ece3; }
+.reference-strip img { width: 62px; height: 78px; border-radius: 8px; object-fit: cover; object-position: top; }
+.reference-strip span, .reference-strip strong, .reference-strip small { display: block; }.reference-strip span { color: var(--teal); font-size: 9px; letter-spacing: .15em; font-weight: 900; }.reference-strip strong { font-size: 14px; margin: 2px 0; }.reference-strip small { color: var(--muted); font-size: 11px; }
+.exercise-card, .reading-card, .pronunciation-box, .listen-card { background: white; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.exercise-card { padding: 25px; }
+.exercise-header { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin-bottom: 18px; }.exercise-header h3 { margin: 0; font-size: 19px; letter-spacing: -.02em; }.exercise-header p { margin: 4px 0 0; font-size: 12px; color: var(--muted); }.score-box { text-align: right; min-width: 95px; }.score-box strong { display: block; color: var(--teal-dark); font-size: 19px; }.score-box small { color: var(--muted); font-size: 10px; }
+.question-list { display: grid; gap: 13px; }.question { padding: 16px; border-radius: 15px; background: #fafbf9; border: 1px solid #edf0ec; transition: background .18s ease, border .18s ease; }.question.correct { background: #ebfaf3; border-color: #96d9bb; }.question.incorrect { background: #fff1ed; border-color: #f2b0a1; }.question legend, .question-label { font-weight: 750; font-size: 14px; padding: 0; margin-bottom: 10px; display: block; }.question-number { color: var(--coral); margin-right: 6px; }.choice-list { display: flex; gap: 8px; flex-wrap: wrap; }.choice-option { position: relative; }.choice-option input { position: absolute; opacity: 0; }.choice-option label { display: block; padding: 8px 12px; border: 1px solid #dfe7e2; border-radius: 10px; background: white; color: #527078; font-size: 12px; cursor: pointer; transition: all .15s ease; }.choice-option input:checked + label { border-color: var(--teal); color: var(--teal-dark); background: var(--aqua); font-weight: 800; }.field, .select-field { width: min(100%, 280px); padding: 11px 12px; border: 1px solid #dfe7e2; border-radius: 10px; background: white; color: var(--ink); }.inline-select { width: 140px; padding: 7px 8px; border: 1px solid #dfe7e2; border-radius: 8px; background: white; color: var(--ink); }.question-meta { min-height: 20px; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 10px; }.feedback { font-size: 11px; font-weight: 800; }.correct .feedback { color: #27825e; }.incorrect .feedback { color: #c45e4e; }.answer-key { color: #756f65; font-size: 11px; display: none; }.answer-key.visible { display: inline; }.exercise-actions { display: flex; gap: 10px; align-items: center; border-top: 1px solid var(--line); margin-top: 22px; padding-top: 18px; }.exercise-actions .button { font-size: 12px; }.key-note { color: var(--muted); font-size: 11px; }
+.listen-card, .pronunciation-box { margin-top: 16px; padding: 20px 23px; display: flex; align-items: center; justify-content: space-between; gap: 20px; background: #fff9e8; border-color: #f1e4c4; }.listen-card h3, .pronunciation-box h3 { margin: 5px 0; font-size: 17px; }.listen-card p, .pronunciation-box p { color: #8c7d67; margin: 0; font-size: 12px; }.mini-label { color: #9e762f; font-size: 9px; margin: 0; }
+.reading-layout { display: grid; grid-template-columns: 1.1fr .72fr; gap: 16px; margin-top: 20px; align-items: stretch; }.reading-card { padding: 23px; background: var(--purple-soft); border-color: #e3defe; }.reading-card h3 { font-size: 25px; margin: 5px 0 16px; letter-spacing: -.04em; }.student-list { display: grid; gap: 9px; }.student-list p { margin: 0; padding: 9px 10px; border-radius: 9px; background: rgba(255,255,255,.72); font-size: 12px; color: #4f4b75; }.student-list mark { color: #594caa; background: transparent; font-weight: 900; }.reading-photo { width: 100%; min-height: 100%; object-fit: cover; object-position: top; border-radius: var(--radius); box-shadow: var(--shadow); }
+.pronunciation-box { background: #eef7ff; border-color: #d8e9fb; }.pronunciation-box .mini-label { color: #4a76a8; }.pronunciation-box p { color: #66809a; }
+.speaking-prompts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }.prompt-card { padding: 15px; border-radius: 13px; background: #f9fbfa; border: 1px solid #e8efeb; }.prompt-card strong { display: block; color: var(--teal-dark); font-size: 12px; margin-bottom: 7px; }.prompt-card textarea { min-height: 65px; resize: vertical; width: 100%; border: 1px solid #dfe7e2; border-radius: 9px; padding: 8px; background: white; font-size: 12px; }
+footer { display: flex; gap: 10px; align-items: center; padding: 25px 6vw 32px; color: var(--muted); font-size: 11px; border-top: 1px solid var(--line); }.small-mark { width: 24px; height: 24px; font-size: 14px; border-radius: 7px; }.footer-note { margin-left: auto; color: var(--teal-dark); font-weight: 800; }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: var(--ink); color: white; padding: 11px 16px; border-radius: 10px; font-size: 12px; transition: all .2s ease; z-index: 20; }.toast.show { opacity: 1; transform: translate(-50%, 0); }
+@media (max-width: 900px) { .hero-section { grid-template-columns: 1fr; padding-top: 52px; }.hero-art { max-width: 560px; width: 100%; margin: 0 auto; }.content-layout { grid-template-columns: 1fr; padding-top: 42px; }.lesson-rail { position: static; }.rail-heading { display: none; }.lesson-nav { display: flex; overflow-x: auto; padding: 0 0 8px; scrollbar-width: thin; }.nav-item { flex: 0 0 190px; }.rail-tip { display: none; } }
+@media (max-width: 600px) { .topbar { height: 66px; padding: 0 18px; }.brand small { display: none; }.top-actions { gap: 6px; }.progress-pill { font-size: 10px; padding: 7px 8px; }.button-ghost { padding: 8px 9px; font-size: 11px; }.hero-section { padding: 47px 22px 35px; min-height: 0; gap: 20px; background: linear-gradient(145deg, #fffdf9 0 70%, #e6f5f1 70%); }.hero-copy h1 { font-size: 54px; }.hero-lede { font-size: 15px; }.hero-meta { gap: 10px; font-size: 10px; }.hero-art { min-height: 270px; transform: scale(.84); transform-origin: top center; margin-bottom: -40px; }.content-layout { padding: 32px 18px 60px; gap: 25px; }.lesson-stack { gap: 48px; }.section-heading h2 { font-size: 34px; }.section-icon { width: 42px; height: 42px; font-size: 24px; }.exercise-card { padding: 17px; border-radius: 17px; }.exercise-header { align-items: flex-start; flex-direction: column; gap: 8px; }.score-box { text-align: left; }.listen-card, .pronunciation-box { align-items: flex-start; flex-direction: column; }.reading-layout { grid-template-columns: 1fr; }.reading-photo { display: none; }.speaking-prompts { grid-template-columns: 1fr; }.reference-strip img { width: 50px; height: 64px; }.reference-strip small { max-width: 210px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+
+</style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Unit 1 Interactive Practice">
+          <span class="brand-mark">1</span>
+          <span><strong>All About Me</strong><small>Interactive practice</small></span>
+        </a>
+        <div class="top-actions">
+          <span class="progress-pill"><span id="completedCount">0</span>/4 checked</span>
+          <button class="button button-ghost" id="resetAll" type="button">↺ Coba lagi</button>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero-section">
+          <div class="hero-copy">
+            <p class="kicker">PREPARE A1 · STUDENT'S BOOK</p>
+            <h1>Unit 1:<br /><em>All About Me</em></h1>
+            <p class="hero-lede">Latihan digital yang cerah untuk mengenal nama, usia, negara, dan cara memperkenalkan diri.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#vocabulary">Mulai latihan <span>→</span></a>
+              <button class="button button-soft speak-btn" type="button" data-speak="Hi! Hello! What's your name? Where are you from?">🔊 Dengarkan contoh</button>
+            </div>
+            <div class="hero-meta"><span>✦ 4 lesson cards</span><span>✦ Instant feedback</span><span>✦ Works on mobile</span></div>
+          </div>
+          <div class="hero-art" aria-label="Preview halaman Unit 1">
+            <div class="art-backdrop"></div>
+            <figure class="book-peek book-peek-back"><img src="assets/page-16.jpg" alt="Halaman buku Unit 1 tentang negara dan kebangsaan" /></figure>
+            <figure class="book-peek book-peek-front"><img src="assets/page-14.jpg" alt="Halaman buku Unit 1 tentang objects and people" /></figure>
+            <span class="sticker sticker-star">✦</span><span class="sticker sticker-note">practice<br />makes progress</span>
+          </div>
+        </section>
+
+        <section class="content-layout">
+          <aside class="lesson-rail" aria-label="Navigasi latihan">
+            <div class="rail-heading"><span>YOUR PATH</span><strong>Unit 1</strong></div>
+            <nav class="lesson-nav">
+              <a class="nav-item active" href="#vocabulary"><span class="nav-number">01</span><span><strong>Words & listen</strong><small>Objects + people</small></span></a>
+              <a class="nav-item" href="#grammar"><span class="nav-number">02</span><span><strong>Grammar lab</strong><small>Determiners + be</small></span></a>
+              <a class="nav-item" href="#reading"><span class="nav-number">03</span><span><strong>Read the world</strong><small>Countries + nationalities</small></span></a>
+              <a class="nav-item" href="#speaking"><span class="nav-number">04</span><span><strong>Say it aloud</strong><small>Pronunciation + speaking</small></span></a>
+            </nav>
+            <div class="rail-tip"><span class="tip-icon">☼</span><strong>Study tip</strong><p>Try every answer first. The key appears after you check.</p></div>
+          </aside>
+
+          <div class="lesson-stack">
+            <section class="lesson-section" id="vocabulary" data-section="vocabulary">
+              <div class="section-heading teal-heading"><div><p class="section-number">01 · VOCABULARY & LISTENING</p><h2>Objects and people</h2><p>Look, listen, and choose the best answer.</p></div><span class="section-icon">◌</span></div>
+              <div class="reference-strip"><img src="assets/page-14.jpg" alt="Referensi halaman 14" /><div><span>PAGE PEEK</span><strong>Book page 14</strong><small>Use the original page as your visual clue.</small></div></div>
+              <div class="exercise-card" id="vocabulary-questions"></div>
+              <div class="listen-card"><div><span class="mini-label">LISTENING HELPER</span><h3>Hear the classroom conversation</h3><p>Audio buku tidak disertakan, jadi gunakan pembaca suara browser untuk mendengarkan contoh.</p></div><button class="button button-dark speak-btn" type="button" data-speak="Hi. I'm Joelle. Hi, Joelle. My name's Rosa. And this is Paolo. Hello, Joelle. See you later. See you Saturday. Goodbye, Joelle. Bye, Rosa.">▶ Play sample</button></div>
+            </section>
+
+            <section class="lesson-section" id="grammar" data-section="grammar">
+              <div class="section-heading coral-heading"><div><p class="section-number">02 · GRAMMAR</p><h2>Build the sentence</h2><p>Choose the determiner and the correct form of <em>be</em>.</p></div><span class="section-icon">⌁</span></div>
+              <div class="reference-strip"><img src="assets/page-15.jpg" alt="Referensi halaman 15" /><div><span>PAGE PEEK</span><strong>Book page 15</strong><small>Determiners and be — singular.</small></div></div>
+              <div class="exercise-card" id="grammar-questions"></div>
+            </section>
+
+            <section class="lesson-section" id="reading" data-section="reading">
+              <div class="section-heading purple-heading"><div><p class="section-number">03 · VOCABULARY & READING</p><h2>Read the world</h2><p>Meet students from different countries.</p></div><span class="section-icon">◎</span></div>
+              <div class="reading-layout">
+                <article class="reading-card"><div class="mini-label">READING TEXT</div><h3>Tell us about you.</h3><div class="student-list"><p><b>Hi, I’m Alejandro.</b> I’m 15. I’m from <mark>Mexico</mark>.</p><p><b>Hi, my name’s Li Ying.</b> I’m 12. I’m <mark>Chinese</mark>.</p><p><b>Hi, I’m Timur.</b> I’m 13. I’m <mark>Turkish</mark>.</p><p><b>Hello. We’re Luisa and Ana.</b> We’re 11 and we’re twins! We’re from <mark>Brazil</mark>.</p><p><b>Hello. I’m Irina.</b> I’m 16 and I’m from <mark>Russia</mark>.</p><p><b>Hi, my name’s Santiago.</b> I’m 13. I’m <mark>Spanish</mark>.</p><p><b>Hello. My name’s Martina.</b> I’m 15. I’m from <mark>Argentina</mark>.</p><p><b>Hi. I’m Matteo.</b> I’m 16. I’m <mark>Italian</mark>.</p></div></article>
+                <img class="reading-photo" src="assets/page-16.jpg" alt="Referensi halaman 16 tentang countries and nationalities" /></div>
+              <div class="exercise-card" id="reading-questions"></div>
+            </section>
+
+            <section class="lesson-section" id="speaking" data-section="speaking">
+              <div class="section-heading blue-heading"><div><p class="section-number">04 · PRONUNCIATION & SPEAKING</p><h2>Say it aloud</h2><p>Listen to the sound, then make the language yours.</p></div><span class="section-icon">◒</span></div>
+              <div class="reference-strip"><img src="assets/page-17.jpg" alt="Referensi halaman 17" /><div><span>PAGE PEEK</span><strong>Book page 17</strong><small>Pronunciation: from · Speaking prompts.</small></div></div>
+              <div class="pronunciation-box"><div><span class="mini-label">PRONUNCIATION · FROM</span><h3>Where are you from?</h3><p>Repeat the question and answer with your partner.</p></div><button class="button button-primary speak-btn" type="button" data-speak="Where are you from? I'm from China.">🔊 Listen & repeat</button></div>
+              <div class="exercise-card" id="speaking-questions"></div>
+            </section>
+          </div>
+        </section>
+      </main>
+      <footer><span class="brand-mark small-mark">1</span><span>Unit 1 interactive practice</span><span class="footer-note">Try. Check. Grow.</span></footer>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script>
+const sectionData = {
+  vocabulary: {
+    title: 'Vocabulary check',
+    subtitle: 'Objects and people · Choose the best answer.',
+    questions: [
+      { id: 'v1', type: 'choice', prompt: 'You take a picture with a …', options: ['camera', 'chair', 'table'], answer: 'camera', key: 'camera' },
+      { id: 'v2', type: 'choice', prompt: 'You can tell the time with a …', options: ['bag', 'watch', 'photo'], answer: 'watch', key: 'watch' },
+      { id: 'v3', type: 'choice', prompt: 'A person who teaches you is your …', options: ['dad', 'friend', 'teacher'], answer: 'teacher', key: 'teacher' },
+      { id: 'v4', type: 'choice', prompt: 'Choose the object: “My phone is red.”', options: ['phone', 'chair', 'students and friends'], answer: 'phone', key: 'phone' }
+    ]
+  },
+  grammar: {
+    title: 'Grammar lab',
+    subtitle: 'Determiners and be · Complete the sentences.',
+    questions: [
+      { id: 'g1', type: 'select', prompt: '___ name’s Tom.', options: ['', 'My', 'Her', 'Their'], answer: 'My', key: 'My' },
+      { id: 'g2', type: 'text', prompt: 'Complete: She ___ my friend.', answer: ['is', "'s", 'is.'], key: 'is / ’s' },
+      { id: 'g3', type: 'select', prompt: 'Complete: You ___ funny!', options: ['', 'am', 'are', 'is'], answer: 'are', key: 'are' },
+      { id: 'g4', type: 'choice', prompt: 'Which sentence is correct?', options: ["He’s my dad.", "He’m my dad.", "He’re my dad."], answer: "He’s my dad.", key: "He’s my dad." },
+      { id: 'g5', type: 'text', prompt: 'Complete: They ___ Brazilian.', answer: ['are', "'re", 'are.'], key: 'are / ’re' },
+      { id: 'g6', type: 'multi', prompt: 'Select all the possessive determiners.', options: ['my', 'you', 'her', 'he', 'your'], answer: ['my', 'her', 'your'], key: 'my, her, your' }
+    ]
+  },
+  reading: {
+    title: 'Reading check',
+    subtitle: 'Countries and nationalities · Read the text, then answer.',
+    questions: [
+      { id: 'r1', type: 'choice', prompt: 'Where is Alejandro from?', options: ['Mexico', 'Brazil', 'Russia'], answer: 'Mexico', key: 'Mexico' },
+      { id: 'r2', type: 'choice', prompt: 'How old is Li Ying?', options: ['11', '12', '13'], answer: '12', key: '12' },
+      { id: 'r3', type: 'choice', prompt: 'What is the nationality of Timur?', options: ['Chinese', 'Turkish', 'Spanish'], answer: 'Turkish', key: 'Turkish' },
+      { id: 'r4', type: 'choice', prompt: 'How old are the twins from Brazil?', options: ['10', '11', '15'], answer: '11', key: '11' },
+      { id: 'r5', type: 'select', prompt: 'Matteo is …', options: ['', 'Russian', 'Italian', 'Argentinian'], answer: 'Italian', key: 'Italian' },
+      { id: 'r6', type: 'text', prompt: 'Martina is from …', answer: ['argentina'], key: 'Argentina' }
+    ]
+  },
+  speaking: {
+    title: 'Pronunciation & speaking',
+    subtitle: 'Say it aloud · Use the prompts to introduce yourself.',
+    questions: []
+  }
+};
+
+const scores = { vocabulary: null, grammar: null, reading: null, speaking: null };
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+}
+
+function renderQuestion(question, index) {
+  let control = '';
+  if (question.type === 'choice') {
+    control = `<div class="choice-list">${question.options.map((option, optionIndex) => `<div class="choice-option"><input id="${question.id}-${optionIndex}" type="radio" name="${question.id}" value="${escapeHtml(option)}"><label for="${question.id}-${optionIndex}">${escapeHtml(option)}</label></div>`).join('')}</div>`;
+  } else if (question.type === 'select') {
+    control = `<select class="select-field" name="${question.id}" aria-label="${escapeHtml(question.prompt)}">${question.options.map((option) => `<option value="${escapeHtml(option)}">${option ? escapeHtml(option) : 'Choose an answer…'}</option>`).join('')}</select>`;
+  } else if (question.type === 'multi') {
+    control = `<div class="choice-list">${question.options.map((option, optionIndex) => `<div class="choice-option"><input id="${question.id}-${optionIndex}" type="checkbox" name="${question.id}" value="${escapeHtml(option)}"><label for="${question.id}-${optionIndex}">${escapeHtml(option)}</label></div>`).join('')}</div>`;
+  } else {
+    control = `<input class="field" name="${question.id}" type="text" autocomplete="off" placeholder="Type your answer…" aria-label="${escapeHtml(question.prompt)}">`;
+  }
+  return `<fieldset class="question" data-question-id="${question.id}" data-type="${question.type}"><legend><span class="question-number">${String(index + 1).padStart(2, '0')}</span>${escapeHtml(question.prompt)}</legend>${control}<div class="question-meta"><span class="feedback" aria-live="polite"></span><span class="answer-key">Key: <strong>${escapeHtml(question.key)}</strong></span></div></fieldset>`;
+}
+
+function renderSection(sectionId) {
+  const holder = document.querySelector(`#${sectionId}-questions`);
+  if (!holder) return;
+  const data = sectionData[sectionId];
+  if (sectionId === 'speaking') {
+    holder.innerHTML = `<div class="exercise-header"><div><h3>Talk about you</h3><p>Write notes first, then say the sentences aloud. This activity is not scored.</p></div><div class="score-box"><strong>Open practice</strong><small>No wrong answers here</small></div></div><div class="speaking-prompts">${[
+      ['My name’s …', 'Say your name.'], ['I’m …', 'Say your age.'], ['I’m from …', 'Say your country.'], ['My phone number’s …', 'Practise your number.'], ['This is my …', 'Describe one object.'], ['My nationality is …', 'Say your nationality.']
+    ].map(([prompt, hint], index) => `<label class="prompt-card"><strong>${index + 1}. ${prompt}</strong><small>${hint}</small><textarea placeholder="Write a note…"></textarea></label>`).join('')}</div><div class="exercise-actions"><button class="button button-primary" type="button" id="speakingDone">✓ Selesai latihan</button><span class="key-note" id="speakingMessage">Fill in your notes or practise out loud.</span></div>`;
+    document.querySelector('#speakingDone').addEventListener('click', () => { document.querySelector('#speakingMessage').textContent = 'Great — you practised introducing yourself!'; scores.speaking = true; updateProgress(); showToast('Speaking practice selesai ✦'); });
+    return;
+  }
+  holder.innerHTML = `<div class="exercise-header"><div><h3>${data.title}</h3><p>${data.subtitle}</p></div><div class="score-box"><strong class="score-value">— / ${data.questions.length}</strong><small>your score</small></div></div><div class="question-list">${data.questions.map(renderQuestion).join('')}</div><div class="exercise-actions"><button class="button button-primary check-button" type="button">✓ Periksa jawaban</button><button class="button button-ghost retry-button" type="button">↺ Reset</button><span class="key-note">Answer key appears after checking.</span></div>`;
+  holder.querySelector('.check-button').addEventListener('click', () => checkSection(sectionId));
+  holder.querySelector('.retry-button').addEventListener('click', () => resetSection(sectionId));
+}
+
+function normalize(value) {
+  return String(value ?? '').trim().toLowerCase().replace(/[’']/g, "'").replace(/\.$/, '');
+}
+function getValue(questionEl, question) {
+  if (question.type === 'choice') {
+    const selected = questionEl.querySelector('input:checked');
+    return selected ? selected.value : '';
+  }
+  if (question.type === 'select' || question.type === 'text') {
+    const control = questionEl.querySelector(`[name="${question.id}"]`);
+    return control ? control.value : '';
+  }
+  return [...questionEl.querySelectorAll('input:checked')].map((input) => input.value);
+}
+function isCorrect(value, answer, type) {
+  if (type === 'multi') return value.length === answer.length && value.every((item) => answer.some((expected) => normalize(expected) === normalize(item)));
+  const expected = Array.isArray(answer) ? answer : [answer];
+  return expected.some((item) => normalize(item) === normalize(value));
+}
+function checkSection(sectionId) {
+  const data = sectionData[sectionId];
+  const holder = document.querySelector(`#${sectionId}-questions`);
+  let correctCount = 0;
+  data.questions.forEach((question) => {
+    const el = holder.querySelector(`[data-question-id="${question.id}"]`);
+    const value = getValue(el, question);
+    const correct = isCorrect(value, question.answer, question.type);
+    el.classList.toggle('correct', correct);
+    el.classList.toggle('incorrect', !correct);
+    el.querySelector('.feedback').textContent = correct ? '✓ Correct' : 'Try again';
+    el.querySelector('.answer-key').classList.add('visible');
+    if (correct) correctCount += 1;
+  });
+  scores[sectionId] = { correct: correctCount, total: data.questions.length };
+  holder.querySelector('.score-value').textContent = `${correctCount} / ${data.questions.length}`;
+  updateProgress();
+  showToast(`${data.title}: ${correctCount}/${data.questions.length} benar`);
+}
+function resetSection(sectionId) {
+  const holder = document.querySelector(`#${sectionId}-questions`);
+  holder.querySelectorAll('input').forEach((input) => { input.checked = false; input.value = input.type === 'text' ? '' : input.value; });
+  holder.querySelectorAll('select').forEach((select) => { select.selectedIndex = 0; });
+  holder.querySelectorAll('.question').forEach((question) => { question.classList.remove('correct', 'incorrect'); question.querySelector('.feedback').textContent = ''; question.querySelector('.answer-key').classList.remove('visible'); });
+  const score = holder.querySelector('.score-value'); if (score) score.textContent = `— / ${sectionData[sectionId].questions.length}`;
+  scores[sectionId] = null; updateProgress();
+}
+function updateProgress() {
+  const count = Object.values(scores).filter(Boolean).length;
+  document.querySelector('#completedCount').textContent = count;
+}
+function speak(text) {
+  if (!('speechSynthesis' in window)) { showToast('Text-to-speech tidak tersedia di browser ini.'); return; }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US'; utterance.rate = .86; utterance.pitch = 1.04;
+  window.speechSynthesis.speak(utterance);
+  showToast('Playing sample audio…');
+}
+function showToast(message) {
+  const toast = document.querySelector('#toast'); toast.textContent = message; toast.classList.add('show');
+  window.clearTimeout(showToast.timer); showToast.timer = window.setTimeout(() => toast.classList.remove('show'), 2400);
+}
+
+Object.keys(sectionData).forEach(renderSection);
+document.querySelectorAll('.speak-btn').forEach((button) => button.addEventListener('click', () => speak(button.dataset.speak)));
+document.querySelector('#resetAll').addEventListener('click', () => { ['vocabulary', 'grammar', 'reading'].forEach(resetSection); const speakingHolder = document.querySelector('#speaking-questions'); speakingHolder.querySelectorAll('textarea').forEach((textarea) => { textarea.value = ''; }); scores.speaking = null; updateProgress(); showToast('Semua latihan di-reset. Semangat!'); });
+
+document.querySelectorAll('.nav-item').forEach((link) => link.addEventListener('click', () => { document.querySelectorAll('.nav-item').forEach((item) => item.classList.remove('active')); link.classList.add('active'); }));
+const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { const active = document.querySelector(`.nav-item[href="#${entry.target.id}"]`); if (active) { document.querySelectorAll('.nav-item').forEach((item) => item.classList.remove('active')); active.classList.add('active'); } } }), { rootMargin: '-20% 0px -65% 0px' });
+document.querySelectorAll('.lesson-section').forEach((section) => observer.observe(section));
+
+</script>
+  </body>
+</html>
